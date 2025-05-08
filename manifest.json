@@ -1,0 +1,17 @@
+{
+  "name": "Lingo",
+  "id": "1475111183881190128",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+
+  "ui": {
+    "main": "dist/index.html",
+    "icon": "logo.png"
+  },  "networkAccess": {
+    "allowedDomains": ["https://designhelper.street-fair.name.ng"]
+  }
+}

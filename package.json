@@ -1,0 +1,31 @@
+{
+  "name": "figma-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc && vite build && npm run build:main",
+    "build:main": "esbuild lib/code.ts --bundle --outfile=dist/code.js",
+    "preview": "vite preview",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@create-figma-plugin/ui": "^4.0.0-alpha.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "axios": "^1.9.0",
+    "preact": "^10.26.2",
+    "react-spinners": "^0.17.0",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.107.0",
+    "@preact/preset-vite": "^2.10.1",
+    "patch-package": "^8.0.0",
+    "prettier": "^3.5.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-singlefile": "^2.1.0"
+  }
+}
