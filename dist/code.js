@@ -70,7 +70,6 @@
       }
       const currentFont = node.fontName;
       await figma.loadFontAsync(currentFont);
-      console.log(textTo, node, "node");
       if (node.type === "TEXT") {
         node.characters = textTo;
       }

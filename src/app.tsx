@@ -23,14 +23,14 @@ export default function App() {
     setLoading(true);
     try {
       const response = await axios.post(
-        import.meta.env.VITE_API_URL
-        ,
-        {
-          ...formData,
-          q: textFrom,
-          target: activeLanguageValue.current,
-        },
-      );
+				import.meta.env.VITE_API_URL,
+				{
+					...formData,
+					q: textFrom,
+					target: activeLanguageValue.current,
+				},
+				{ headers: { "Content-Type": "application/json" } }
+			);
 
       parent.postMessage(
         {
@@ -51,6 +51,7 @@ export default function App() {
         "*",
       );
     } catch (err: any) {
+      console.log(err);
       parent.postMessage(
         {
           pluginMessage: {
