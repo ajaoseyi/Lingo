@@ -42,6 +42,21 @@ function updateSelectionInfo() {
     },
   });
 }
+function getText() {
+	let node: any = null;
+	for (const selectedNode of figma.currentPage.selection) {
+		if ("children" in selectedNode) {
+      node = selectedNode.children.find((child: any) => child.type === "TEXT");
+      console.log(node, 'nodesss')
+			if (node) break;
+    } else if (selectedNode.type === "TEXT") {
+      node = selectedNode;
+    }
+  }
+  console.log(figma.currentPage.selection, "node any");
+	if (!node) return;
+	return node.characters;
+}
 
 // Set up the event listener for selection changes
 figma.on("selectionchange", () => {
@@ -49,6 +64,9 @@ figma.on("selectionchange", () => {
   currentSelection = figma.currentPage.selection;
   // Send updated selection info to UI
   updateSelectionInfo();
+  sendMessage({ content: getText(), type: "detectLanguage" });
+
+
 });
 
 function postMessageWithPromise(message: any): Promise<void> {
@@ -92,9 +110,15 @@ figma.ui.onmessage = (msg) => {
       node.characters = textTo;
     }
   }
+
+
   if (msg.type === "changeText") {
     changeTextInFrame(msg.data.text, msg.data.node);
   }
+  if (msg.type === "detectLanguage") {
+    sendMessage({ content: getText(), type: 'detectLanguage' });
+    
+	}
   if (msg.type === "sendNotification") {
     figma.notify(msg.message, {
       timeout: 6000,

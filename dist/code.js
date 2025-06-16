@@ -35,9 +35,25 @@
       }
     });
   }
+  function getText() {
+    let node = null;
+    for (const selectedNode of figma.currentPage.selection) {
+      if ("children" in selectedNode) {
+        node = selectedNode.children.find((child) => child.type === "TEXT");
+        console.log(node, "nodesss");
+        if (node) break;
+      } else if (selectedNode.type === "TEXT") {
+        node = selectedNode;
+      }
+    }
+    console.log(figma.currentPage.selection, "node any");
+    if (!node) return;
+    return node.characters;
+  }
   figma.on("selectionchange", () => {
     currentSelection = figma.currentPage.selection;
     updateSelectionInfo();
+    sendMessage({ content: getText(), type: "detectLanguage" });
   });
   function postMessageWithPromise(message) {
     return new Promise((resolve, reject) => {
@@ -76,6 +92,9 @@
     }
     if (msg.type === "changeText") {
       changeTextInFrame(msg.data.text, msg.data.node);
+    }
+    if (msg.type === "detectLanguage") {
+      sendMessage({ content: getText(), type: "detectLanguage" });
     }
     if (msg.type === "sendNotification") {
       figma.notify(msg.message, {

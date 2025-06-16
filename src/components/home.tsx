@@ -28,7 +28,7 @@ const Home = ({
 					>
 						<div
 							className={
-								"flex justify-between px-[12px] mb-[12px] items-center"
+								"flex justify-between px-[12px] mb-[8px] items-center"
 							}
 						>
 							<div className={"flex justify-start items-center gap-[14px] "}>
@@ -55,7 +55,7 @@ const Home = ({
           onClick={triggerGetTextOnFigma}
           disabled={!active}
           className={
-            "focus:outline-none focus:ring-0 bg-[#100F0E] rounded-[20px] text-xs text-white  mt-[28px] w-full py-8 "
+            "focus:outline-none focus:ring-0 bg-[#100F0E] rounded-[20px] text-xs text-white  mt-[4px] w-full py-6 "
           }
         >
           {loading ? (

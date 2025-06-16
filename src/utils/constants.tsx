@@ -3,10 +3,15 @@ import MadarinIcon from "../assets/china.svg";
 import SpanishIcon from "../assets/spain.svg";
 import PortugeseIcon from "../assets/portugal.svg";
 import IndiaIcon from "../assets/india.png";
-
+import EnglishIcon from "../assets/united-kingdom.svg"
 
 
 export const languages = [
+	{
+		name: "English",
+		icon: <img className={"rounded-full"} src={EnglishIcon} />,
+		value: "en",
+	},
 	{
 		name: "French",
 		icon: <img className={"rounded-full"} src={FrenchIcon} />,
@@ -31,5 +36,5 @@ export const languages = [
 		name: "Hindi",
 		icon: <img className={"rounded-full"} src={IndiaIcon} />,
 		value: "hi",
-	}
+	},
 ];
