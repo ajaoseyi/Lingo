@@ -12,6 +12,6 @@
     "main": "dist/index.html",
     "icon": "logo.png"
   },  "networkAccess": {
-    "allowedDomains": ["https://designhelper.street-fair.name.ng"]
+    "allowedDomains": ["https://lingo.street-fair.name.ng/"]
   }
 }
